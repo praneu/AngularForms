@@ -6,7 +6,8 @@
   <form #userForm="ngForm"> <!--#templete reference variable -->
     <div>
       <label>Name</label>
-      <input type="text" required #name="ngModel" name="userName" [(ngModel)]="userModel.name">
+      <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid" name="userName" [(ngModel)]="userModel.name" 
+      class="form-control">
     </div>
 
     <div>
