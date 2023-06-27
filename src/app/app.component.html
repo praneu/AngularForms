@@ -3,26 +3,11 @@
     Bootcamp Enrollment Form
   </h1>
 
-   <!--Binding to the form data-->
-
-  <!--{{ userForm.value | json }} 
-  <hr />
-  {{ userModel | json }}
-  -->
-
   <form #userForm="ngForm"> <!--#templete reference variable -->
     <div>
       <label>Name</label>
       <input type="text" required #name="ngModel" name="userName" [(ngModel)]="userModel.name">
     </div>
-
-    <!--Control associated by class{{name.className}} --> <!--Binding to the input class name property-->
-    {{name.touched}} <!--Binding to the ngModel and accessing its properties-->
-
-    <!--[ngModel] = Property data binding ,One way binding,
-           data flow from class to view and not view to class -->
-    <!-- [(ngngModel)]= 2 way binding, data flows both direction-->
-
 
     <div>
       <label>Email</label>
