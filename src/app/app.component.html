@@ -6,7 +6,7 @@
   <form #userForm="ngForm"> <!--#templete reference variable -->
     <div>
       <label>Name</label>
-      <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid" name="userName" [(ngModel)]="userModel.name" 
+      <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" name="userName" [(ngModel)]="userModel.name" 
       class="form-control">
     </div>
 
@@ -17,7 +17,8 @@
 
     <div>
       <label>Phone</label>
-      <input type="tel" name="phone" [(ngModel)]="userModel.phone">
+      <input type="tel" name="phone" #phone="ngModel" pattern="^\d{10}$" 
+        [class.is-invalid]="phone.invalid && phone.touched" [(ngModel)]="userModel.phone">
     </div>
 
     <div>
