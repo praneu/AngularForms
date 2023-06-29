@@ -4,6 +4,9 @@
   </h1>
 
   <form #userForm="ngForm"> <!--#templete reference variable -->
+
+    {{ userForm.form.valid}}
+    
     <div>
       <label>Name</label>
       <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
@@ -67,7 +70,7 @@
       <label> Send me promotional offer </label>
     </div>
 
-    <button> Submit </button>
+    <button [disabled]="userForm.form.invalid || topicHasError"> Submit </button>
 
   </form>
 </div>
