@@ -6,8 +6,9 @@
   <form #userForm="ngForm"> <!--#templete reference variable -->
     <div>
       <label>Name</label>
-      <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" name="userName" [(ngModel)]="userModel.name" 
-      class="form-control">
+      <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
+       name="userName" [(ngModel)]="userModel.name" class="form-control">
+      <small class="text-danger" [class.hidden]="name.valid || name.untouched"> **Name is required </small>
     </div>
 
     <div>
@@ -17,8 +18,15 @@
 
     <div>
       <label>Phone</label>
-      <input type="tel" name="phone" #phone="ngModel" pattern="^\d{10}$" 
+      <input type="tel"  name="phone" #phone="ngModel" pattern="^\d{10}$" required
         [class.is-invalid]="phone.invalid && phone.touched" [(ngModel)]="userModel.phone">
+      <!-- <small class="text-danger" [class.hidden]="phone.valid || phone.untouched">Phone number is required and must be 10 digits</small>  --> 
+      <!--Validation with ngIf directive along with errors property of ngModel -->
+        <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+         <small class="text-danger" *ngIf="phone.errors['required']">Phone number is required.</small>
+         <small class="text-danger" *ngIf="phone.errors['pattern']">Phone number must be ten digits.</small>
+        </div>
+
     </div>
 
     <div>

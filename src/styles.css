@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 .is-invalid{
     border-color: red;
-    
+}
+.text-danger{
+    color: red ;
+}
+.hidden{
+    visibility: hidden;
 }
