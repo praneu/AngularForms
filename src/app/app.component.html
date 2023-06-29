@@ -4,6 +4,9 @@
   </h1>
 
   <form #userForm="ngForm"> <!--#templete reference variable -->
+
+    {{ userForm.form.valid}}
+    
     <div>
       <label>Name</label>
       <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched"
@@ -48,7 +51,7 @@
         <option *ngFor="let topic of topics">{{ topic }}</option>
       </select>
       <small class="text-danger" [class.hidden]="!topicHasError || topic.untouched"> **  Please select a topic</small>
-    </div>
+    </div><!--event binding with ngModel-->
 
     <div>
       <label>Time Preference</label>
@@ -67,7 +70,7 @@
       <label> Send me promotional offer </label>
     </div>
 
-    <button> Submit </button>
+    <button [disabled]="userForm.form.invalid || topicHasError"> Submit </button>
 
   </form>
 </div>
