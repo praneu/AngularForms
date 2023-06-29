@@ -48,7 +48,7 @@
         <option *ngFor="let topic of topics">{{ topic }}</option>
       </select>
       <small class="text-danger" [class.hidden]="!topicHasError || topic.untouched"> **  Please select a topic</small>
-    </div>
+    </div><!--event binding with ngModel-->
 
     <div>
       <label>Time Preference</label>
