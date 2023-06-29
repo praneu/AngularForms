@@ -31,11 +31,23 @@
 
     </div>
 
-    <div>
-      <select name="topic" [(ngModel)]="userModel.topic">
+    <!-- <div>
+      <select required #topic="ngModel" [class.is-invalid]="topic.invalid && topic.touched" name="topic" [(ngModel)]="userModel.topic">
         <option value="">I am intrested in </option>
         <option *ngFor="let topic of topics">{{ topic }}</option>
       </select>
+      <small class="text-danger" [class.hidden]="topic.valid || topic.untouched"> ** Please select a topic</small>
+    </div> -->
+    <!--The above code works when value is set to a empty string. -->
+
+    <div>
+      <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value)" 
+        #topic="ngModel" [class.is-invalid]="topicHasError && topic.touched" name="topic" 
+        [(ngModel)]="userModel.topic">
+        <option value="default">I am intrested in </option>
+        <option *ngFor="let topic of topics">{{ topic }}</option>
+      </select>
+      <small class="text-danger" [class.hidden]="!topicHasError || topic.untouched"> **  Please select a topic</small>
     </div>
 
     <div>
