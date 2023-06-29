@@ -13,7 +13,9 @@
 
     <div>
       <label>Email</label>
-      <input type="text" name="email" [(ngModel)]="userModel.email">
+      <input type="text" name="email" required #email="ngModel" [(ngModel)]="userModel.email"
+        [class.is-invalid]="email.invalid && email.touched">
+      <small class="text-danger" [class.hidden]="email.valid || email.untouched"> ** Email is required</small>  
     </div>
 
     <div>
@@ -23,8 +25,8 @@
       <!-- <small class="text-danger" [class.hidden]="phone.valid || phone.untouched">Phone number is required and must be 10 digits</small>  --> 
       <!--Validation with ngIf directive along with errors property of ngModel -->
         <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
-         <small class="text-danger" *ngIf="phone.errors['required']">Phone number is required.</small>
-         <small class="text-danger" *ngIf="phone.errors['pattern']">Phone number must be ten digits.</small>
+         <small class="text-danger" *ngIf="phone.errors['required']"> ** Phone number is required.</small>
+         <small class="text-danger" *ngIf="phone.errors['pattern']"> ** Phone number must be ten digits.</small>
         </div>
 
     </div>
