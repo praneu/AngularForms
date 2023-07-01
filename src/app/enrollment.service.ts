@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { User } from './user';
 import { catchError } from 'rxjs';
 import { throwError } from 'rxjs';
@@ -17,5 +17,7 @@ export class EnrollmentService {
                .pipe(catchError(this.errorHandler))
   }
 
-  err
+  errorHandler(error: HttpErrorResponse){
+    return throwError(error);
+  }
 }
