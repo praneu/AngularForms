@@ -15,6 +15,8 @@ export class AppComponent {
 
   Submitted = false;
 
+  errormsg='';
+
   userModel = new User('Rob','rob@test.com', 5556669999, 'default','morning', true); 
 
   constructor(private _enrollmentService: EnrollmentService ){}
@@ -33,7 +35,7 @@ export class AppComponent {
     this._enrollmentService.enroll(this.userModel)
        .subscribe({
            next: (data) => console.log('Success!', data),
-           error: (error) => console.error('Error!', error)}as Observer<any>
+           error: (error) => this.errormsg = error.statusText }as Observer<any>
        );
   }
   

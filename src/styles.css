@@ -8,3 +8,8 @@
 .hidden{
     visibility: hidden;
 }
+.alert-danger{
+    text-align: center;
+    color: red;
+    background-color: moccasin;
+}
