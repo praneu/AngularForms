@@ -3,9 +3,9 @@
     Bootcamp Enrollment Form
   </h1>
 
-  <form #userForm="ngForm"> <!--#templete reference variable -->
+  <form #userForm="ngForm" novalidate *ngIf="!Submitted" (ngSubmit)="onSubmit()"> <!--#templete reference variable -->
 
-    {{ userForm.form.valid}}
+    <!-- {{ userForm.form.valid}} -->
     
     <div>
       <label>Name</label>
